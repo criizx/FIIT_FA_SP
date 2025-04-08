@@ -1,32 +1,41 @@
 #include <gtest/gtest.h>
-#include "../include/client_logger.h"
-#include "../include/client_logger_builder.h"
 
 #include <filesystem>
 
-int main(int argc, char *argv[])
-{
-    testing::InitGoogleTest(&argc, argv);
+#include "../include/client_logger.h"
+#include "../include/client_logger_builder.h"
 
-    client_logger_builder builder;
+int main(int argc, char *argv[]) {
+	testing::InitGoogleTest(&argc, argv);
 
-    builder.add_file_stream("a.txt" ,logger::severity::trace).
-            add_file_stream("b.txt" ,logger::severity::trace).
-            add_file_stream("b.txt" ,logger::severity::trace).
-            add_file_stream("a.txt", logger::severity::debug).
-            add_file_stream("../logger/a.txt", logger::severity::debug).
-            add_console_stream(logger::severity::trace).
-            set_format("[%d %t][%s] %m");
+	client_logger_builder builder;
 
-    builder.transform_with_configuration("set.json", "log");
+	builder.add_file_stream("a.txt", logger::severity::trace)
+	    .add_file_stream("b.txt", logger::severity::trace)
+	    .add_file_stream("b.txt", logger::severity::trace)
+	    .add_file_stream("a.txt", logger::severity::debug)
+	    .add_file_stream("../logger/a.txt", logger::severity::debug)
+	    .add_console_stream(logger::severity::trace)
+	    .set_format("[%d %t][%s] %m");
 
-    std::unique_ptr<logger> log(builder.build());
+	builder.transform_with_configuration("set.json", "log");
 
-    log->trace("it is a very long message!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!").debug("dd");
+	std::unique_ptr<logger> log(builder.build());
 
-    std::unique_ptr<logger> logger2(builder.build());
+	log->trace(
+	       "it is a very long "
+	       "message!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	       "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+	    .debug("dd");
 
-    logger2->trace("From second logger");
+	std::unique_ptr<logger> logger2(builder.build());
 
-    return RUN_ALL_TESTS();
+	logger2->trace("From second logger");
+
+	return RUN_ALL_TESTS();
 }
+
+/*
+autotools bash bazel clang cmake gcc ld make meson python
+
+*/

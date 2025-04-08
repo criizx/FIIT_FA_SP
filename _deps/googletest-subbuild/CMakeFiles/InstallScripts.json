@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/denis/FIIT_FA_SP/_deps/googletest-subbuild/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

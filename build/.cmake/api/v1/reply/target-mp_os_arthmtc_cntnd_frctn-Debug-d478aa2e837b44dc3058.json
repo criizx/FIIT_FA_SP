@@ -1,0 +1,150 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "arithmetic/continued_fraction/libmp_os_arthmtc_cntnd_frctn.a"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_link_libraries",
+			"target_include_directories"
+		],
+		"files" : 
+		[
+			"arithmetic/continued_fraction/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 3,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 12,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 16,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 7,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g"
+				},
+				{
+					"fragment" : "-std=gnu++2b"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 4,
+					"path" : "/home/denis/FIIT_FA_SP/arithmetic/continued_fraction/./include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/home/denis/FIIT_FA_SP/allocator/allocator/./include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/denis/FIIT_FA_SP/arithmetic/fraction/./include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/denis/FIIT_FA_SP/arithmetic/big_integer/./include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/denis/FIIT_FA_SP/common/./include"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "23"
+			},
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "mp_os_allctr_allctr::@67a2d12acd41ed6b0bc3"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "mp_os_arthmtc_bg_intgr::@ef276916ed2ac9027e60"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "mp_os_arthmtc_frctn::@07c0fe30a8e534897c4b"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "mp_os_cmmn::@bfc844598bd03e848b3c"
+		}
+	],
+	"id" : "mp_os_arthmtc_cntnd_frctn::@7ccaccf4488b2bd26d98",
+	"name" : "mp_os_arthmtc_cntnd_frctn",
+	"nameOnDisk" : "libmp_os_arthmtc_cntnd_frctn.a",
+	"paths" : 
+	{
+		"build" : "arithmetic/continued_fraction",
+		"source" : "arithmetic/continued_fraction"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "arithmetic/continued_fraction/src/continued_fraction.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}
