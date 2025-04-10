@@ -10,11 +10,15 @@ using namespace nlohmann;
 logger_builder &client_logger_builder::add_file_stream(const std::string &stream_file_path,
                                                        logger::severity severity) & {
 	_output_streams[severity].first.emplace_front(stream_file_path);
+
+	_output_streams[severity].second = true;
 	return *this;
 }
 
 logger_builder &client_logger_builder::add_console_stream(logger::severity severity) & {
 	_output_streams[severity].first.emplace_front("");
+
+	_output_streams[severity].second = true;
 	return *this;
 }
 

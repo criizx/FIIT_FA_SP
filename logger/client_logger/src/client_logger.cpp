@@ -109,11 +109,8 @@ client_logger::client_logger(const client_logger &other)
 
 client_logger &client_logger::operator=(const client_logger &other) {
 	if (this != &other) {
-		this->~client_logger();
-
 		_output_streams = other._output_streams;
 		_format = other._format;
-
 		for (auto &[severity, stream_pair] : _output_streams) {
 			for (auto &stream : stream_pair.first) {
 				stream.open();
@@ -122,6 +119,7 @@ client_logger &client_logger::operator=(const client_logger &other) {
 	}
 	return *this;
 }
+
 client_logger::client_logger(client_logger &&other) noexcept
     : _output_streams(std::move(other._output_streams)), _format(std::move(other._format)) {
 	other._output_streams.clear();
@@ -142,17 +140,29 @@ client_logger &client_logger::operator=(client_logger &&other) noexcept {
 }
 client_logger::~client_logger() noexcept {}
 
-client_logger::refcounted_stream::refcounted_stream(const std::string &path) : _stream(path, nullptr) { open(); }
+client_logger::refcounted_stream::refcounted_stream(const std::string &path) : _stream(path, nullptr) {
+	if (!_stream.first.empty()) {
+		open();
+	}
+}
 
 void client_logger::refcounted_stream::open() {
+	if (_stream.first.empty()) {
+		return;
+	}
+
 	if (_stream.second == nullptr) {
 		auto &entry = _global_streams[_stream.first];
+
 		if (entry.first++ == 0) {
-			entry.second.open(_stream.first, std::ios::app);
+			entry.second.open(_stream.first, std::ios::out | std::ios::app);
+
 			if (!entry.second.is_open()) {
-				throw std::runtime_error("log file error opening" + _stream.first);
+				throw std::runtime_error("[logger] log file error opening: " + std::string(_stream.first));
 			}
+		} else {
 		}
+
 		_stream.second = &entry.second;
 	}
 }
