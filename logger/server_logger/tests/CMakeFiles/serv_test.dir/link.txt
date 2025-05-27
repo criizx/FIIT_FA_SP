@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/serv_test.dir/server.cpp.o CMakeFiles/serv_test.dir/server_test.cpp.o -o serv_test  ../../../lib/libgtest_main.a ../libmp_os_lggr_srvr_lggr.a ../../../lib/libgtest.a ../../../common/libmp_os_cmmn.a ../../logger/libmp_os_lggr_lggr.a
